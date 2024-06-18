@@ -64,6 +64,17 @@ void display1() {
 
     glFlush();
 }
+void reshape(int w, int h) {
+    glViewport(0, 0, (GLsizei)w, (GLsizei)h);
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    if (w <= h)
+        gluOrtho2D(0.0, 1000.0, 0.0, 1000.0 * (GLfloat)h / (GLfloat)w);
+    else
+        gluOrtho2D(0.0, 1000.0 * (GLfloat)w / (GLfloat)h, 0.0, 1000.0);
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+}
 
 // Main function
 int main(int argc, char** argv) {
@@ -79,6 +90,7 @@ int main(int argc, char** argv) {
     glutCreateWindow("Displaying house with translation");
     myinit();
     glutDisplayFunc(display1);
+    glutReshapeFunc(reshape);
     glutMainLoop();
     return 0;
 }
