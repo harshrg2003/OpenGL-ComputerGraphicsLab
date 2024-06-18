@@ -66,6 +66,17 @@ void display() {
 
     glFlush();
 }
+void reshape(int w, int h) {
+    glViewport(0, 0, (GLsizei)w, (GLsizei)h);
+    glMatrixMode(GL_PROJECTION);
+    glLoadIdentity();
+    if (w <= h)
+        gluOrtho2D(-500.0, 500.0, -500.0 * (GLfloat)h / (GLfloat)w, 500.0 * (GLfloat)h / (GLfloat)w);
+    else
+        gluOrtho2D(-500.0 * (GLfloat)w / (GLfloat)h, 500.0 * (GLfloat)w / (GLfloat)h, -500.0, 500.0);
+    glMatrixMode(GL_MODELVIEW);
+    glLoadIdentity();
+}
 
 // Main function
 int main(int argc, char** argv) {
@@ -79,6 +90,7 @@ int main(int argc, char** argv) {
     glutCreateWindow("Rotation of Line and Triangle");
     myinit();
     glutDisplayFunc(display);
+    glutReshapeFunc(reshape);
     glutMainLoop();
     return 0;
 }
