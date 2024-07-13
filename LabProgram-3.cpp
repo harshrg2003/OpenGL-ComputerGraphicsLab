@@ -2,6 +2,7 @@
 #include<GL/glut.h>
 #include<math.h>
 double rot = 0, rot2 = 0, move_x = 0, move_y = 0, move_z = 0;
+float s = 0.1;
 void init() {
 	glMatrixMode(GL_MODELVIEW);
 	glEnable(GL_DEPTH_TEST);
@@ -69,7 +70,7 @@ void disp() {
 	glClearColor(0, 0, 0, 1);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glLoadIdentity();
-	cube(0, 0, 0, 0, 0, 0, 0.1, 1.0);
+	cube(0, 0, 0, 0, 0, 0, s, 1.0);
 	//cube(0.5, 0, 0, 0, 0, 0, 0.2, 0.9);
 	//cube(0, 0.5, 0, 0, 0, 0, 0.2, 0.8);
 	//cube(0, 0, 0.5, 0, 0, 0, 0.2, 0.7);
@@ -86,6 +87,8 @@ void keyboard(unsigned char key, int x, int y) {
 	case '[':rot2--; break;
 	case ']':rot2++; break;
 	case 'r':move_x = move_z = rot = rot2 = 0; break;
+	case '+':s += 0.1; break;
+	case '-':s -= 0.1; break;
 	case 'q': exit(0);
 	}
 	glutPostRedisplay();
