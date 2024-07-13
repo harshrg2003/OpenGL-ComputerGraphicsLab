@@ -37,7 +37,7 @@ void disp() {
 	glVertex2f(50, 50);
 	glVertex2f(-50, 50);
 	glEnd();
-	glFlush();
+	glutSwapBuffers();
 }
 void mouse(int button, int state, int x, int y) {
 	if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN) {
@@ -49,7 +49,7 @@ void mouse(int button, int state, int x, int y) {
 }
 int main(int argc, char** argv) {
 	glutInit(&argc, argv);
-	glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
+	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
 	glutInitWindowSize(600, 600);
 	glutInitWindowPosition(300, 150);
 	glutCreateWindow("Rotation Of square-Idle function");
