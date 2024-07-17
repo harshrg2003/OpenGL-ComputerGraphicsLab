@@ -25,8 +25,8 @@ void linebresenhams(int x0, int y0, int xend, int yend)
 
 	if (x0 > xend)
 	{
-		x0 = xend;
-		y0 = yend;
+		x = xend;
+		y = yend;
 		xend = x0;
 
 	}
